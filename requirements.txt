@@ -1,0 +1,9 @@
+selenium
+webdriver-manager
+pandas
+openpyxl
+python-dotenv
+numpy
+undetected-chromedriver
+# pytest
+# unittest
