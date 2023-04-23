@@ -6,6 +6,21 @@
 ## Version
 1.0.0
 
+## Structure
+The main code structure is organized as
+```text
+| helper
+| test_automation
+    | test_***.py (testsuite)
+        > testcases
+| test_data_driven
+    | test_***.py
+| excel
+
+```
+The code is used `pytest` lib for testing the program, how many failed and passed testcases when we use `selenium`. The test is trigger when we call `pytest <location of testcases>`. The `helper` dir contains the supporting functions and 2 main processes such as `ChangePassword` and `Login` . The `test_automation` dir contains all testcases with `test_*.py` while `test_data_driven` contains the same testcases and structure as `test_automation` but using loading the data from `excel` folder.
+
+
 ## Requirements
 + `Python` >= 3.10.9
 + `Pip` >= 23.0.1
@@ -29,23 +44,19 @@ username=abcde
 password=1234567
 ```
 
-## Structure
-The main code structure is organized as
-```text
-| helper
-| test_automation
-    | test_***
-| test_data_driven
-    | test ***
-| excel
-
-```
-The code is used `pytest` lib for testing the program, how many failed and passed testcases when we use `selenium`. The test is trigger when we call `pytest <location of testcases>`. The `helper` dir contains the supporting functions and 2 main processes such as `ChangePassword` and `Login` . The `test_automation` dir contains all testcases with `test_*.py` while `test_data_driven` contains the same testcases and structure as `test_automation` but using loading the data from `excel` folder.
 
 ## How to run
-Open any CLIs
+Open any CLIs. And run
 ```sh
 pytest test_automation/test_B_F1_1.py
+```
+Run the whole folder
+```sh
+pytest test_automation/
+```
+Run the specific testcase
+```sh
+pytest test_automation/test_B_F1_*.py
 ```
 
 <!-- if you use Mac and get the error like this "“chromedriver” cannot be opened because the developer cannot be verified."
