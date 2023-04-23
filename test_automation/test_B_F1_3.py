@@ -1,15 +1,11 @@
 import undetected_chromedriver as uc
-import sys
-import os
-sys.path.append(os.path.abspath('../helper'))
-from helper.Login import Login
-from dotenv import load_dotenv
-load_dotenv()
+from helper.utils import *
 
 
 def login_func(username: str, password: str) -> bool: 
     login_ins = Login(uc.Chrome(use_subprocess=True))
     login_res = login_ins.login_run(username=username, password=password)
+    login_ins.stop()
     return login_res
 
 

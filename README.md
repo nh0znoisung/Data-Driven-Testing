@@ -9,7 +9,7 @@
 ## Requirements
 + `Python` >= 3.10.9
 + `Pip` >= 23.0.1
-+ Download `Chrome Webdriver` version >= 112.0.5615.49 at [Webdriver](https://chromedriver.storage.googleapis.com/index.html?path=112.0.5615.49/)
++ Create an account at https://moodle.org/demo. Make sure the password is different from **`testing2*`** and **`password`**, the username must be different from **`username`**
 
 ## Installation
 1. Clone our source code
@@ -23,18 +23,30 @@ $ cd Data-Driven-Testing
 $ pip install -r requirements.txt
 ```
 
-3. Create a **.env file** base on **.env.example** contains the password and username
+3. Create a **.env file** base on the content of **.env.example** contains the password and username
+```text
+username=abcde
+password=1234567
+```
 
+## Structure
+The main code structure is organized as
+```text
+| helper
+| test_automation
+    | test_***
+| test_data_driven
+    | test ***
+| excel
+
+```
+The code is used `pytest` lib for testing the program, how many failed and passed testcases when we use `selenium`. The test is trigger when we call `pytest <location of testcases>`. The `helper` dir contains the supporting functions and 2 main processes such as `ChangePassword` and `Login` . The `test_automation` dir contains all testcases with `test_*.py` while `test_data_driven` contains the same testcases and structure as `test_automation` but using loading the data from `excel` folder.
 
 ## How to run
 Open any CLIs
 ```sh
-python main.py --feature <required testing feature> --io <required xlsx testcase file> --sheet <required sheetname> --skiprows <optional skiprows>
-```
-For example
-```sh
-python main.py --feature <required testing feature> --io <required xlsx testcase file> --sheet <required sheetname> --skiprows <optional skiprows>
+pytest test_automation/test_B_F1_1.py
 ```
 
-if you use Mac and get the error like this "“chromedriver” cannot be opened because the developer cannot be verified."
-xattr -d com.apple.quarantine <name-of-executable>
+<!-- if you use Mac and get the error like this "“chromedriver” cannot be opened because the developer cannot be verified."
+xattr -d com.apple.quarantine <name-of-executable> -->

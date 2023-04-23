@@ -3,7 +3,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException,NoSuchElementException
 import undetected_chromedriver as uc
-from constants import URL
+from helper.constants import URL
 import time
 import os
 from dotenv import load_dotenv
@@ -68,7 +68,7 @@ class Login():
 
     def __del__(self):
         """Destructor quit the webdriver"""
-        self.driver.close()
+        self.driver.quit()
     
     def login_run(self, username: str, password: str, captcha_timeout: float = 20.) -> None:
         """Run the whole process for login
